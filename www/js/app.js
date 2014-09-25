@@ -22,8 +22,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   var cssPages = ["Header", "Content", "Footer", "Buttons", "ButtonsBlock", "ButtonsFullWidth",
-    "ButtonsDifferentSizes", "ButtonsOutlined", "ButtonsClear", "ButtonsIcons", "ButtonsHeadersFooters",
-    "ClearButtonsInHeaders", "ButtonBar"];
+    "ButtonsDifferentSizes", "ButtonsOutlined", "ButtonsClear", "ButtonsIcons", "ButtonBar",
+    "List", "ListDividers", "ListIcons", "ListButtons", "ListAvatars", "ListThumbnails", "ListInset"];
 
   $stateProvider
 

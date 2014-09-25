@@ -25,19 +25,14 @@
 
   <body ng-app="empty">
   	<ion-pane>
-		<div class="bar bar-header bar-stable">
+		<ion-header class="bar-stable bar bar-header">
 			<a class="button button-clear back-button" href="/#/app/css"><i class="icon ion-ios7-arrow-back"></i> Back</a>
 			<h1 class="title">Header (stable)</h1>
-		</div>
-	  	<ion-content class="has-header has-footer">
-		<!--
+	  	</ion-header>
 		<div class="bar bar-subheader bar-calm">
 			<h2 class="title">Sub Header (calm)</h2>
 		</div>
-	-->
-
-
-				
+	  	<ion-content class="has-subheader has-footer">
 			<h2>
 			      INTRODUCTION
 			    </h2>
@@ -66,7 +61,7 @@
 			      <a name="link2H_4_0002" id="link2H_4_0002">
 			      <!--  H2 anchor --> </a>
 			    </p>
-			    <p><a href="header3.html">Alternate using ion-header and ion-footer</a></p>
+			    <p><a href="header2.html">Alternate NOT using ion-header and ion-footer</a></p>
 			    <div style="height: 4em;">
 			      <br /><br /><br /><br />
 			    </div>
@@ -204,11 +199,12 @@
 			    </p>
 
 		</ion-content>
-		<div class="bar bar-footer bar-royal">
+
+		<ion-footer class="bar-royal bar bar-footer">
 			<button class="button button-clear">Left</button>
 			<h2 class="title">Footer (royal)</h1>
 			<button class="button button-clear">Right</button>
-		</div>
+		</ion-footer>
 	</ion-pane>
 </body>
 </html>
