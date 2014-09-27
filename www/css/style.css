@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+.box { height: 500px; width: 100%; padding-top: 200px;}
+
+.blue { background-color: blue }
+.yellow { background-color: gold }
+.pink { background-color: pink }
+.red { background-color: red }
+.green { background-color: green }
+
+.box > h1 { color: white; text-align: center; vertical-align: center; display: block top: 40% position: relative; }

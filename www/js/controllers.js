@@ -41,15 +41,69 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('JsSamplesCtrl', function($scope, $ionicActionSheet, $timeout) {
+  $scope.showSampleActionSheet = function() {
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show(
+      {
+        buttons: [
+          { text: '<b>Share</b> This' },
+          { text: 'Move' }
+        ],
+        destructiveText: 'Delete',
+        titleText: 'Modify your album',
+        cancelText: 'Cancel',
+        cancel: function() {
+            alert('cancelled');
+        },
+        buttonClicked: function(index) {
+          alert('clicked index ' + index);;
+        }
+      }
+    );
+  };
+
+  $scope.hideRefresh = function() {
+    console.log('hideRefresh()');
+    $scope.$broadcast('scroll.refreshComplete'); 
+  };
+
+  $scope.addItem = function() {
+    $scope.items = $scope.items || [];
+    $scope.id = $scope.id || 1;
+    $scope.items.push( { id: $scope.id++ } );
+  };
+
+  for (var i = 0; i < 5; i++) {
+    $scope.addItem();
+  }
+
+  $scope.doRefresh = function() {
+    console.log('doRefresh()');
+    $timeout(function() { 
+      $scope.addItem();
+      $scope.$broadcast('scroll.refreshComplete'); 
+    }, 2000);
+  }
+
+
+  // for ion-list:
+  $scope.edit = function(item) {
+    alert('Edit Item: ' + item.id);
+  };
+
+  $scope.share = function(item) {
+    alert('Share Item: ' + item.id);
+  };
+  
+  $scope.moveItem = function(item, fromIndex, toIndex) {
+    $scope.items.splice(fromIndex, 1);
+    $scope.items.splice(toIndex, 0, item);
+  };
+  
+  $scope.onItemDelete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

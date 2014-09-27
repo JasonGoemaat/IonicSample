@@ -21,9 +21,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  var cssPages = ["Header", "Content", "Footer", "Buttons", "ButtonsBlock", "ButtonsFullWidth",
+  var cssPages = ["Header", "Buttons", "ButtonsBlock", "ButtonsFullWidth",
     "ButtonsDifferentSizes", "ButtonsOutlined", "ButtonsClear", "ButtonsIcons", "ButtonBar",
-    "List", "ListDividers", "ListIcons", "ListButtons", "ListAvatars", "ListThumbnails", "ListInset"];
+    "List", "ListDividers", "ListIcons", "ListButtons", "ListAvatars", "ListThumbnails", "ListInset",
+    "Cards", "CardLists", "CardImages", "CardShowcase", "FormLabels", "FormOther",
+    "OtherControls"
+    ];
+  var jsPages = ["ActionSheet", "Refresher", "SlideBox"];
 
   $stateProvider
 
@@ -52,11 +56,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-    .state('app.javascript', {
-      url: "/javascript",
+    .state('app.js', {
+      url: "/js",
       views: {
         'menuContent' :{
-          templateUrl: "templates/javascript.html"
+          templateUrl: "templates/js.html"
         }
       }
     })
@@ -81,6 +85,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     });
   }
+
+  for (i = 0; i < jsPages.length; i++) {
+    $stateProvider.state('app.js_' + jsPages[i].toLowerCase(), {
+      url: "/js/" + jsPages[i].toLowerCase(),
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/js/" + jsPages[i].toLowerCase() + ".html"
+        }
+      }
+    });
+  }
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/welcome');
 });
