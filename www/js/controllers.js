@@ -4,6 +4,8 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
 
+  $scope.href = window.location.href;
+
   $scope.cssPages = ["Header", "Content", "Footer", "Buttons", "ButtonsBlock", "ButtonsFullWidth",
     "ButtonsDifferentSizes", "ButtonsOutlined", "ButtonsClear", "ButtonsIcons", "ButtonsHeadersFooters",
     "ClearButtonsInHeaders", "ButtonBar"];

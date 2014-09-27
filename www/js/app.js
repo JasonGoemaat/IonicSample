@@ -60,6 +60,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
+    .state('app.css_buttons2', {
+      url: "/css/buttons2",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/css/buttons.html"
+        }
+      }
+    })
     ;
 
   for (i = 0; i < cssPages.length; i++) {
