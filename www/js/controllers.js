@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('JsSamplesCtrl', function($scope, $ionicActionSheet, $timeout) {
+.controller('JsSamplesCtrl', function($scope, $timeout, $ionicActionSheet, $ionicLoading) {
   $scope.showSampleActionSheet = function() {
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show(
@@ -84,8 +84,19 @@ angular.module('starter.controllers', [])
       $scope.addItem();
       $scope.$broadcast('scroll.refreshComplete'); 
     }, 2000);
-  }
+  };
 
+  $scope.showLoading = function() {
+    $ionicLoading.show({
+      template: "This blocking screen will go away in 4 seconds"
+    });
+
+    $timeout($scope.hideLoading, 4000);
+  };
+
+  $scope.hideLoading = function() {
+    $ionicLoading.hide();
+  };
 
   // for ion-list:
   $scope.edit = function(item) {
@@ -105,6 +116,95 @@ angular.module('starter.controllers', [])
     $scope.items.splice($scope.items.indexOf(item), 1);
   };
 })
+
+// special modal view
+.controller('JsModalCtrl', function($scope, $ionicModal) {
+  // first we have to set up modal
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+    scope: $scope,
+    animation: "slide-in-up"
+  }).then(function(modal) {
+    // whem modal is set up, we will have it on our scope
+    $scope.modal = modal;
+  });
+
+  $scope.showModal = function() {
+    $scope.modal.show();
+  };
+
+  $scope.hideModal = function() {
+    $scope.modal.hide();
+  };
+
+  // NEED TO CLEAN UP THE MODAL WHEN DONE
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  // can do some things when modal is hidden or removed
+  $scope.$on('modal.hidden', function() {
+    console.log('modal.hidden');
+  });
+
+  $scope.$on('modal.removed', function() {
+    console.log('modal.removed');
+  });
+})
+
+// special popover view
+.controller('JsPopoverCtrl', function($scope, $ionicPopover) {
+  // first we have to set up modal
+  $ionicPopover.fromTemplateUrl('my-popover.html', {
+    scope: $scope,
+    animation: "slide-in-up"
+  }).then(function(popover) {
+    // whem modal is set up, we will have it on our scope
+    $scope.popover = popover;
+  });
+
+  $scope.showPopover = function() {
+    $scope.popover.show();
+  };
+
+  $scope.hidePopover = function() {
+    $scope.popover.hide();
+  };
+
+  // NEED TO CLEAN UP THE POPOVER WHEN DONE
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+
+  // can do some things when modal is hidden or removed
+  $scope.$on('popover.hidden', function() {
+    console.log('popover.hidden');
+  });
+
+  $scope.$on('popover.removed', function() {
+    console.log('popover.removed');
+  });
+})
+
+// special popover view
+.controller('JsEventsCtrl', function($scope) {
+  $scope.flags = {
+    hold: false,
+    tap: false,
+    touch: false,
+    release: false,
+    drag: false,
+    dragUp: false,
+    dragRight: false,
+    dragDown: false,
+    dragLef: false,
+    swipe: false,
+    swipeUp: false,
+    swipeRight: false,
+    swipeDown: false,
+    swipeLeft: false
+  };
+})
+
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

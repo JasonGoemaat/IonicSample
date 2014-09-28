@@ -8,3 +8,15 @@
 .green { background-color: green }
 
 .box > h1 { color: white; text-align: center; vertical-align: center; display: block top: 40% position: relative; }
+
+.ionicons-demo li {
+  display: inline-block;
+  padding: 2px;
+  font-size: 32px;
+}
+
+.ionicons-demo li:before {
+    display: block;
+    width: 42px;
+    text-align: center;
+}

@@ -25,9 +25,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     "ButtonsDifferentSizes", "ButtonsOutlined", "ButtonsClear", "ButtonsIcons", "ButtonBar",
     "List", "ListDividers", "ListIcons", "ListButtons", "ListAvatars", "ListThumbnails", "ListInset",
     "Cards", "CardLists", "CardImages", "CardShowcase", "FormLabels", "FormOther",
-    "OtherControls"
+    "OtherControls", "Icons"
     ];
-  var jsPages = ["ActionSheet", "Refresher", "SlideBox"];
+  var jsPages = ["List", "Modal", "Popover", "SlideBox", "Events"];
 
   $stateProvider
 
