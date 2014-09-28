@@ -32,11 +32,12 @@ You also need to install ant from here:
 
   http://ant.apache.org/
 
-You need to make sure the directories with `ant.bat` and `android.bat` are in your
-path, these are mine:
+You need to make sure the directories with `ant.bat`, `android.bat` (and adb.exe
+probably) are in your path, these are mine:
 
   C:\Users\Jason\AppData\Local\Android\apache-ant-1.9.4\bin
   C:\Users\Jason\AppData\Local\Android\android-studio\sdk\tools
+  C:\Users\Jason\AppData\Local\Android\android-studio\sdk\platform-tools
 
 If you have any trouble, try installing sun's JDK:
   
@@ -52,7 +53,40 @@ You should be able to run these commands from the command line and see something
   ant
   javac
   android
-  
+
+You may need to run 'android' and install some things, like 'Android 4.4.2 (API 19)'
+which has the files for developing with that version of android.
+
+To run on a device you need to do several things.  First install the
+'Google USB Driver' with the android tool above which actually installs only the 
+installation files, then go to the 'sdk\extras\google\usb_driver' directory and
+right-click on the '.inf' file to install it.
+
+Starting with android 4.2, you need to enable developer options by going to the
+about page in settings and tapping the bottom entry "Build Number" seven times,
+then you will see a new "Developer Options" entry in settings where you can 
+enable "USB debugging".  After that you should be able to run "adb devices"
+in the command line and see your device attached.  If not, try going to
+storage under settings and hitting the three dots in the header at the top
+right (under the time) and picking 'USB Connection', then change it to 
+connect as a 'Camera (PTP)' instead of 'Media device (MTP)' (or possibly
+the other way).  If you use a different device you may have to reinstall
+the google usb driver, or go to the device in your device manager and update
+the driver from there using the downloaded one.
+
+If 'adb devices' shows it is unauthorized, you may need to set an
+ANDROID_SDK_HOME directory to where your SDK is, and check the device for
+a message asking you to authorize your computer.  Try disabling and
+re-enabling USB debugging as well.
+
+If you want to change the api version, edit platforms\android\CordovaLib\project.properties
+and change this line:
+
+  target=android-19
+
+To use the emulator you need to define a device to emulate.  Run 'android.bat' and
+select Tools->Manage AVDs.  Here you can create an android virtual device the emulator
+can use.
 
 ios
 ===========
