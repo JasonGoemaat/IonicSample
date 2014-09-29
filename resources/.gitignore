@@ -1,0 +1,2 @@
+# No PNG files, can re-create them from the svg with Inkscape and the android export plugin
+*.png

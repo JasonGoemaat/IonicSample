@@ -203,7 +203,7 @@ angular.module('starter.controllers', [])
   $scope.$on('$destroy', function() {
     $rootScope.sideMenuSwipeEnabled = true;
     console.log('JsEventsCtrl scope destroyed!  Side menu swiping should be enabled again');
-  })
+  });
   $scope.flags = {
     hold: false,
     tap: false,
