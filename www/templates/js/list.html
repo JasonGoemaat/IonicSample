@@ -16,6 +16,7 @@
 		<ion-refresher
 			pulling-text="Pull to refresh..."
 			on-refresh="doRefresh()">
+			Refreshing Items (adding one item)
 		</ion-refresher>
 
 		<ion-list
@@ -30,16 +31,21 @@
 				<ion-option-button class="button-calm" ng-click="share(item)">Share</ion-option-button>
 				<ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
 			</ion-item>
-
-			<ion-item ng-click="showSampleActionSheet()" class="item-icon-left">
-				<i class="icon ion-wand"></i>
-				Shows an action sheet
-			</ion-item>
-
-			<ion-item ng-click="showLoading()" class="item-icon-left">
-				<i class="icon ion-wand"></i>
-				Shows a loading overlay
-			</ion-item>
 		</ion-list>
+		
+		<h4>Pull down to refresh and add an item after a 2 second simulated pause</h4>
+		
+		<div class="button-bar">
+			<button class="button" ng-click="showSampleActionSheet()">
+				Action Sheet
+			</button>
+
+			<button class="button" ng-click="showLoading()">
+				Loading Overlay
+			</button>
+		</div>
+
+		<h4 style="color: #888">{{message}}</h4>
+
 	</ion-content>
 </ion-view>

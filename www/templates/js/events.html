@@ -1,9 +1,9 @@
 <ion-view title="Events" ng-controller="JsEventsCtrl">
 	<ion-nav-buttons side="left">
-		<!--<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>-->
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
 	</ion-nav-buttons>
 	
-	<ion-content>
+	<ion-content side-menu-content drag-content="false">
 		<div class="card"
 			on-hold="flags.hold = !flags.hold"
 			on-tap="flags.tap = !flags.tap"
@@ -11,15 +11,17 @@
 			on-release="flags.release = !flags.release"
 			>
 			<div class="item item-divider">Hold, tap and touch this card</div>
+			<div class="item padding">&nbsp;</div>
 			<div class="item padding">
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.hold }">Hold</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.tap }">Tap</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.touch }">Touch</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.release }">Release</button>
 			</div>
+			<div class="item padding">&nbsp;</div>
 		</div>
 
-		<div class="card"
+		<div class="card" side-menu-content drag-content="false"
 			on-drag="flags.drag = !flags.drag"
 			on-drag-up="flags.dragUp = !flags.dragUp"
 			on-drag-down="flags.dragDown = !flags.dragDown"
@@ -27,6 +29,7 @@
 			on-drag-right="flags.dragRight = !flags.dragRight"
 			>
 			<div class="item item-divider">Drag this card</div>
+			<div class="item padding">&nbsp;</div>
 			<div class="item padding">
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.drag }">Drag</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.dragUp }">Up</button>
@@ -34,6 +37,7 @@
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.dragLeft }">Left</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.dragRight }">Right</button>
 			</div>
+			<div class="item padding">&nbsp;</div>
 		</div>
 		
 		<div class="card"
@@ -44,6 +48,7 @@
 			on-swipe-right="flags.swipeRight = !flags.swipeRight"
 			>
 			<div class="item item-divider">Swipe this card</div>
+			<div class="item padding">&nbsp;</div>
 			<div class="item padding">
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.swipe }">Swipe</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.swipeUp }">Up</button>
@@ -51,6 +56,7 @@
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.swipeLeft }">Left</button>
 				<button class="button button-balanced" ng-class="{ 'button-outline': !flags.swipeRight }">Right</button>
 			</div>
+			<div class="item padding">&nbsp;</div>
 		</div>
 		
 	</ion-content>

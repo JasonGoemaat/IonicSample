@@ -41,23 +41,34 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('CategoryCtrl', function($scope, $stateParams, categoriesByName) {
+  $scope.category = categoriesByName[$stateParams.name];
+})
+
 .controller('JsSamplesCtrl', function($scope, $timeout, $ionicActionSheet, $ionicLoading) {
   $scope.showSampleActionSheet = function() {
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show(
       {
+        titleText: 'Modify your album',
         buttons: [
           { text: '<b>Share</b> This' },
           { text: 'Move' }
         ],
         destructiveText: 'Delete',
-        titleText: 'Modify your album',
         cancelText: 'Cancel',
         cancel: function() {
-            alert('cancelled');
+          $scope.message = 'Action Sheet cancelled';
         },
         buttonClicked: function(index) {
-          alert('clicked index ' + index);;
+          console.log('buttonClicked', index);
+          $scope.message = 'Action Sheet clicked index ' + index;
+          return true; // hide sheet
+        },
+        destructiveButtonClicked: function() {
+          console.log('destructiveButtonClicked');
+          $scope.message = 'Action Sheet destructive button clicked';
+          return true; // hide sheet
         }
       }
     );
@@ -74,7 +85,7 @@ angular.module('starter.controllers', [])
     $scope.items.push( { id: $scope.id++ } );
   };
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 3; i++) {
     $scope.addItem();
   }
 
@@ -100,11 +111,11 @@ angular.module('starter.controllers', [])
 
   // for ion-list:
   $scope.edit = function(item) {
-    alert('Edit Item: ' + item.id);
+    $scope.message = 'Edit Item: ' + item.id;
   };
 
   $scope.share = function(item) {
-    alert('Share Item: ' + item.id);
+    $scope.message = 'Share Item: ' + item.id;
   };
   
   $scope.moveItem = function(item, fromIndex, toIndex) {
@@ -186,7 +197,13 @@ angular.module('starter.controllers', [])
 })
 
 // special popover view
-.controller('JsEventsCtrl', function($scope) {
+.controller('JsEventsCtrl', function($scope, $rootScope, $ionicSideMenuDelegate) {
+  $rootScope.sideMenuSwipeEnabled = false;
+  console.log('JsEventsCtrl scope created!  Side menu swiping should be DISABLED');
+  $scope.$on('$destroy', function() {
+    $rootScope.sideMenuSwipeEnabled = true;
+    console.log('JsEventsCtrl scope destroyed!  Side menu swiping should be enabled again');
+  })
   $scope.flags = {
     hold: false,
     tap: false,
@@ -203,6 +220,10 @@ angular.module('starter.controllers', [])
     swipeDown: false,
     swipeLeft: false
   };
+  //$ionicSideMenuDelegate.canDragContent(false);
+  //$scope.on('$destroy', function() {
+//    $ionicSideMenuDelegate.canDragContent(true);
+//  });
 })
 
 
